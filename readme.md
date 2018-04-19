@@ -1,4 +1,4 @@
-# ES6 Basics
+# Power List
 
 This repository is an introduction to ES6, as well as using Babel on a simple NodeJS site.
 

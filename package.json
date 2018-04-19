@@ -19,6 +19,8 @@
   "dependencies": {
     "babel-preset-react": "^6.24.1",
     "express": "^4.15.2",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.6",
     "webpack-preset-babel-stage-2": "^0.2.0"
   }
 }

@@ -1,0 +1,9 @@
+/*
+  User ID
+  First name
+  Last name
+  email
+  Password
+  token
+  
+*/
