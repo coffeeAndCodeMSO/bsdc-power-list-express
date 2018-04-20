@@ -1,9 +1,8 @@
-/*
-  User ID
-  First name
-  Last name
-  email
-  Password
-  token
-  
-*/
+const user = sequelize.define('user', {
+  firstName: {
+    type: Sequelize.STRING
+  },
+  lastName: {
+    type: Sequalize.STRING
+  }
+});

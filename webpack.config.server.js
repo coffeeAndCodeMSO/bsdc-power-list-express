@@ -27,5 +27,6 @@ module.exports = {
             }
         ]
     },
-    devtool: 'source-map'
+    devtool: 'source-map',
+    externals: ['pg', 'sqlite3', 'tedious', 'pg-hstore'],
 };
