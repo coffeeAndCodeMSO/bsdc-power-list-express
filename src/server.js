@@ -5,6 +5,7 @@ const passport = require('passport');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const env = require('dotenv');
+const exphbs = require('express-handlebars');
 
 // middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,15 +26,15 @@ models.sequelize.sync().then(() => {
   console.log("Unable to connect to database", err);
 });
 
+
+// handlebars
+app.set('views', __dirname + '/views');
+app.engine('hbs', exphbs({
+  extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
+
 // routes
-var users = require('./routes/users')
-
-app.use(express.static('./src/public'));
-
-app.get('/',(req,res)=>{
-  res.sendFile('index.html');
-});
-
-app.use(users);
+const authRoute = require('./routes/auth.js')(app);
 
 app.listen(3000,()=>console.log("listening on port 3000"));
