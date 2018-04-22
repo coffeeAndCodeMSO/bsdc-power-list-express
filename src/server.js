@@ -19,14 +19,6 @@ app.use(passport.session());
 // models
 const models = require('./models');
 
-// sync db
-models.sequelize.sync().then(() => {
-  console.log("Connecto to database successful");
-}).catch(err => {
-  console.log("Unable to connect to database", err);
-});
-
-
 // handlebars
 app.set('views', __dirname + '/views');
 app.engine('hbs', exphbs({
@@ -35,6 +27,20 @@ app.engine('hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // routes
-const authRoute = require('./routes/auth.js')(app);
+const authRoute = require('./routes/auth.js')(app, passport);
+
+app.use('/', (req, res) => {
+  res.send("Home page");
+})
+
+// load passport strategies
+require('./config/passport/passport.js')(passport, models.user);
+
+// sync db
+models.sequelize.sync().then(() => {
+  console.log("Connecto to database successful");
+}).catch(err => {
+  console.log("Unable to connect to database", err);
+});
 
 app.listen(3000,()=>console.log("listening on port 3000"));

@@ -7,3 +7,17 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
   res.render('signin');
 }
+
+exports.dashboard = (req, res) => {
+  res.render('dashboard')
+}
+
+exports.logout = (req, res) => {
+  req.session.destroy(err => {
+    if(err) {
+      console.log(err);
+    }
+
+    res.redirect('/')
+  })
+}
